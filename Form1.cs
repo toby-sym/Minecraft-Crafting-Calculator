@@ -23,25 +23,25 @@ namespace MinecraftCraftingCalculator
             numQuantity.Enabled = false;
             btnAddItem.Enabled = false;
             btnCalculate.Enabled = false;
+            btnClearItems.Enabled = false; // Disable clear button initially
 
             // Hook up Events
             btnAddItem.Click += BtnAddItem_Click;
             btnCalculate.Click += BtnCalculate_Click;
+            btnClearItems.Click += BtnClearItems_Click;    // Clear button event
+            lstRawMaterials.DoubleClick += LstRawMaterials_DoubleClick;
+            lstCraftingList.DoubleClick += LstCraftingList_DoubleClick; // Double-click to remove input item
         }
 
         private void btnLoadRecipes_Click(object sender, EventArgs e)
         {
-            // Load JSON files via File Dialogue
             using (var ofd = new OpenFileDialog())
             {
-                // Specifies JSON files
                 ofd.Multiselect = true;
                 ofd.Filter = "JSON files (*.json)|*.json";
 
-                // Show File Dialogue
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    // Initialise Recipe Load Count
                     int loadedCount = 0;
                     foreach (var file in ofd.FileNames)
                     {
@@ -50,33 +50,31 @@ namespace MinecraftCraftingCalculator
                             var json = File.ReadAllText(file);
                             var recipe = JsonConvert.DeserializeObject<MinecraftRecipe>(json);
 
-                            // Input Validation of JSON file
                             if (recipe?.Result?.Item != null)
                             {
-                                _recipes[recipe.Result.Item] = recipe;
-                                
-                                // Increment Recipe Load Count
+                                if (!_recipes.ContainsKey(recipe.Result.Item))
+                                {
+                                    _recipes[recipe.Result.Item] = recipe;
+                                }
+                                // else ignore duplicates for now
 
                                 loadedCount++;
                             }
                         }
-                        // File Load Failure Exception
                         catch (Exception ex)
                         {
                             MessageBox.Show($"Failed to load {Path.GetFileName(file)}:\n{ex.Message}");
                         }
                     }
 
-                    // Recipe Count
                     lblRecipeCount.Text = $"Loaded {loadedCount} recipes.";
-                    
-                    // Re-Enable GUI
+
                     txtItemName.Enabled = true;
                     numQuantity.Enabled = true;
                     btnAddItem.Enabled = true;
                     btnCalculate.Enabled = true;
+                    btnClearItems.Enabled = true; // Enable Clear button now
 
-                    // Auto-Complete Text Input Box
                     var autoComplete = new AutoCompleteStringCollection();
                     autoComplete.AddRange(_recipes.Keys.ToArray());
                     txtItemName.AutoCompleteCustomSource = autoComplete;
@@ -88,7 +86,6 @@ namespace MinecraftCraftingCalculator
 
         private void BtnAddItem_Click(object sender, EventArgs e)
         {
-            // Input Validation
             string itemName = txtItemName.Text.Trim();
             if (string.IsNullOrEmpty(itemName))
             {
@@ -111,7 +108,6 @@ namespace MinecraftCraftingCalculator
             craftingItems.Add((itemName, quantity));
             lstCraftingList.Items.Add($"{quantity} x {itemName}");
 
-            // Reset Text Input Box for next entry
             txtItemName.Clear();
             numQuantity.Value = 1;
             txtItemName.Focus();
@@ -119,42 +115,54 @@ namespace MinecraftCraftingCalculator
 
         private void BtnCalculate_Click(object sender, EventArgs e)
         {
-            // Clear previous results
             lstRawMaterials.Items.Clear();
 
-            // Total ingredient counts across all craftingItems
             var totalCounts = new Dictionary<string, int>();
 
             foreach (var (itemName, quantity) in craftingItems)
             {
-                Dictionary<string, int> ingredients;
                 try
                 {
-                    ingredients = CalculateIngredients(itemName);
+                    var ingredients = CalculateIngredients(itemName);
+                    foreach (var kvp in ingredients)
+                    {
+                        if (totalCounts.ContainsKey(kvp.Key))
+                            totalCounts[kvp.Key] += kvp.Value * quantity;
+                        else
+                            totalCounts[kvp.Key] = kvp.Value * quantity;
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Error calculating ingredients for {itemName}: {ex.Message}");
-                    continue;
-                }
-
-                foreach (var kvp in ingredients)
-                {
-                    if (totalCounts.ContainsKey(kvp.Key))
-                        totalCounts[kvp.Key] += kvp.Value * quantity;
-                    else
-                        totalCounts[kvp.Key] = kvp.Value * quantity;
                 }
             }
 
-            // Display total counts nicely sorted by name
             foreach (var kvp in totalCounts.OrderBy(k => k.Key))
             {
                 lstRawMaterials.Items.Add($"{kvp.Value} x {kvp.Key}");
             }
         }
 
-        // Calculate Ingredients based on Minecraft JSON Recipe Structure
+        // Clear button handler
+        private void BtnClearItems_Click(object sender, EventArgs e)
+        {
+            craftingItems.Clear();
+            lstCraftingList.Items.Clear();
+            lstRawMaterials.Items.Clear();
+        }
+
+        // Double-click to remove item from crafting input list
+        private void LstCraftingList_DoubleClick(object sender, EventArgs e)
+        {
+            int selectedIndex = lstCraftingList.SelectedIndex;
+            if (selectedIndex < 0) return;
+
+            craftingItems.RemoveAt(selectedIndex);
+            lstCraftingList.Items.RemoveAt(selectedIndex);
+        }
+
+        // CalculateIngredients method unchanged
         public Dictionary<string, int> CalculateIngredients(string itemName)
         {
             if (!_recipes.ContainsKey(itemName))
@@ -192,7 +200,6 @@ namespace MinecraftCraftingCalculator
                     }
                     break;
 
-                // Edge Case of Shapeless Recipes
                 case "minecraft:crafting_shapeless":
                     if (recipe.Ingredients == null)
                         throw new Exception("Malformed shapeless recipe");
@@ -210,7 +217,6 @@ namespace MinecraftCraftingCalculator
                     }
                     break;
 
-                // Edge Case of Non-Craftable Recipes
                 case "minecraft:smelting":
                 case "minecraft:blasting":
                 case "minecraft:smoking":
@@ -247,6 +253,144 @@ namespace MinecraftCraftingCalculator
                 dict[key] += count;
             else
                 dict[key] = count;
+        }
+
+        private void LstRawMaterials_DoubleClick(object sender, EventArgs e)
+        {
+            if (lstRawMaterials.SelectedItem == null) return;
+
+            var selectedText = lstRawMaterials.SelectedItem.ToString();
+            var parts = selectedText.Split(new string[] { " x " }, StringSplitOptions.None);
+            if (parts.Length < 2) return;
+
+            if (!int.TryParse(parts[0], out int quantity)) return;
+            string itemName = parts[1];
+
+            var allRecipes = _recipes.Values.Where(r => r.Result?.Item == itemName).ToList();
+            if (allRecipes.Count == 0)
+            {
+                MessageBox.Show($"No recipes found for {itemName}");
+                return;
+            }
+
+            using (var recipeForm = new RecipeSelectionForm(itemName, quantity, allRecipes))
+            {
+                if (recipeForm.ShowDialog() == DialogResult.OK)
+                {
+                    var selectedRecipes = recipeForm.SelectedRecipes;
+
+                    var totalCounts = new Dictionary<string, int>();
+
+                    foreach (var (recipe, qtyMultiplier) in selectedRecipes)
+                    {
+                        var ingrDict = CalculateIngredientsByRecipe(recipe, qtyMultiplier);
+                        foreach (var kvp in ingrDict)
+                        {
+                            if (totalCounts.ContainsKey(kvp.Key))
+                                totalCounts[kvp.Key] += kvp.Value;
+                            else
+                                totalCounts[kvp.Key] = kvp.Value;
+                        }
+                    }
+
+                    int selectedIndex = lstRawMaterials.SelectedIndex;
+                    if (selectedIndex < 0) return;
+
+                    lstRawMaterials.BeginUpdate();
+                    lstRawMaterials.Items.RemoveAt(selectedIndex);
+
+                    foreach (var kvp in totalCounts.OrderBy(k => k.Key))
+                    {
+                        lstRawMaterials.Items.Insert(selectedIndex, $"{kvp.Value} x {kvp.Key}");
+                        selectedIndex++;
+                    }
+
+                    lstRawMaterials.EndUpdate();
+                }
+            }
+        }
+
+        private Dictionary<string, int> CalculateIngredientsByRecipe(MinecraftRecipe recipe, int desiredOutputQuantity)
+        {
+            var counts = new Dictionary<string, int>();
+
+            int outputCount = recipe.Result?.Count ?? 1;
+            int craftsNeeded = (int)Math.Ceiling((double)desiredOutputQuantity / outputCount);
+
+            switch (recipe.Type)
+            {
+                case "minecraft:crafting_shaped":
+                    if (recipe.Pattern == null || recipe.Key == null)
+                        throw new Exception("Malformed shaped recipe");
+
+                    foreach (var row in recipe.Pattern)
+                    {
+                        foreach (var symbol in row)
+                        {
+                            if (symbol == ' ' || !recipe.Key.ContainsKey(symbol.ToString()))
+                                continue;
+
+                            var ingredientsList = recipe.Key[symbol.ToString()];
+                            foreach (var ingredient in ingredientsList)
+                            {
+                                if (ingredient == null)
+                                    continue;
+
+                                string key = ingredient.Item ?? ingredient.Tag;
+                                if (string.IsNullOrEmpty(key))
+                                    continue;
+
+                                AddCount(counts, key, ingredient.Count * craftsNeeded);
+                            }
+                        }
+                    }
+                    break;
+
+                case "minecraft:crafting_shapeless":
+                    if (recipe.Ingredients == null)
+                        throw new Exception("Malformed shapeless recipe");
+
+                    foreach (var ingredient in recipe.Ingredients)
+                    {
+                        if (ingredient == null)
+                            continue;
+
+                        string key = ingredient.Item ?? ingredient.Tag;
+                        if (string.IsNullOrEmpty(key))
+                            continue;
+
+                        AddCount(counts, key, ingredient.Count * craftsNeeded);
+                    }
+                    break;
+
+                case "minecraft:smelting":
+                case "minecraft:blasting":
+                case "minecraft:smoking":
+                case "minecraft:campfire_cooking":
+                case "minecraft:stonecutting":
+                    if (recipe.Ingredient != null)
+                    {
+                        string key = recipe.Ingredient.Item ?? recipe.Ingredient.Tag;
+                        if (!string.IsNullOrEmpty(key))
+                        {
+                            AddCount(counts, key, recipe.Ingredient.Count * craftsNeeded);
+                        }
+                        else
+                        {
+                            throw new Exception($"Malformed {recipe.Type} recipe");
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception($"Malformed {recipe.Type} recipe");
+                    }
+                    break;
+
+                default:
+                    throw new NotSupportedException($"Recipe type '{recipe.Type}' not supported");
+            }
+
+            return counts;
         }
     }
 }

@@ -37,6 +37,7 @@
             lstRawMaterials = new ListBox();
             btnLoadRecipes = new Button();
             lblRecipeCount = new Label();
+            btnClearItems = new Button();
             ((System.ComponentModel.ISupportInitialize)numQuantity).BeginInit();
             SuspendLayout();
             // 
@@ -114,11 +115,21 @@
             lblRecipeCount.TabIndex = 7;
             lblRecipeCount.Text = "Upload Recipe JSON";
             // 
+            // btnClearItems
+            // 
+            btnClearItems.Location = new Point(12, 415);
+            btnClearItems.Name = "btnClearItems";
+            btnClearItems.Size = new Size(75, 23);
+            btnClearItems.TabIndex = 8;
+            btnClearItems.Text = "Clear List";
+            btnClearItems.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnClearItems);
             Controls.Add(lblRecipeCount);
             Controls.Add(btnLoadRecipes);
             Controls.Add(lstRawMaterials);
@@ -145,5 +156,6 @@
         private ListBox lstRawMaterials;
         private Button btnLoadRecipes;
         private Label lblRecipeCount;
+        private Button btnClearItems;
     }
 }

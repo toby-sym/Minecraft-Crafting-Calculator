@@ -1,7 +1,32 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "T:\\MinecraftCraftingCalculator\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0B956A17-4F7A-4536-9F1F-C86AC5CEA312}|MinecraftCraftingCalculator.csproj|t:\\minecraftcraftingcalculator\\recipeselectionform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B956A17-4F7A-4536-9F1F-C86AC5CEA312}|MinecraftCraftingCalculator.csproj|solutionrelative:recipeselectionform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B956A17-4F7A-4536-9F1F-C86AC5CEA312}|MinecraftCraftingCalculator.csproj|t:\\minecraftcraftingcalculator\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B956A17-4F7A-4536-9F1F-C86AC5CEA312}|MinecraftCraftingCalculator.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B956A17-4F7A-4536-9F1F-C86AC5CEA312}|MinecraftCraftingCalculator.csproj|T:\\MinecraftCraftingCalculator\\recipeselectionform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0B956A17-4F7A-4536-9F1F-C86AC5CEA312}|MinecraftCraftingCalculator.csproj|solutionrelative:recipeselectionform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B956A17-4F7A-4536-9F1F-C86AC5CEA312}|MinecraftCraftingCalculator.csproj|t:\\minecraftcraftingcalculator\\recipeselectionform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B956A17-4F7A-4536-9F1F-C86AC5CEA312}|MinecraftCraftingCalculator.csproj|solutionrelative:recipeselectionform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B956A17-4F7A-4536-9F1F-C86AC5CEA312}|MinecraftCraftingCalculator.csproj|T:\\MinecraftCraftingCalculator\\recipeselectionform.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
+      "RelativeMoniker": "D:0:0:{0B956A17-4F7A-4536-9F1F-C86AC5CEA312}|MinecraftCraftingCalculator.csproj|solutionrelative:recipeselectionform.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B956A17-4F7A-4536-9F1F-C86AC5CEA312}|MinecraftCraftingCalculator.csproj|T:\\MinecraftCraftingCalculator\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0B956A17-4F7A-4536-9F1F-C86AC5CEA312}|MinecraftCraftingCalculator.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +34,82 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RecipeSelectionForm.cs",
+              "DocumentMoniker": "T:\\MinecraftCraftingCalculator\\RecipeSelectionForm.cs",
+              "RelativeDocumentMoniker": "RecipeSelectionForm.cs",
+              "ToolTip": "T:\\MinecraftCraftingCalculator\\RecipeSelectionForm.cs",
+              "RelativeToolTip": "RecipeSelectionForm.cs",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAAwFoAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T17:44:10.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RecipeSelectionForm.resx",
+              "DocumentMoniker": "T:\\MinecraftCraftingCalculator\\RecipeSelectionForm.resx",
+              "RelativeDocumentMoniker": "RecipeSelectionForm.resx",
+              "ToolTip": "T:\\MinecraftCraftingCalculator\\RecipeSelectionForm.resx",
+              "RelativeToolTip": "RecipeSelectionForm.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-07-15T17:44:03.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RecipeSelectionForm.Designer.cs",
+              "DocumentMoniker": "T:\\MinecraftCraftingCalculator\\RecipeSelectionForm.Designer.cs",
+              "RelativeDocumentMoniker": "RecipeSelectionForm.Designer.cs",
+              "ToolTip": "T:\\MinecraftCraftingCalculator\\RecipeSelectionForm.Designer.cs",
+              "RelativeToolTip": "RecipeSelectionForm.Designer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACoAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T17:43:54.653Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RecipeSelectionForm.cs [Design]",
+              "DocumentMoniker": "T:\\MinecraftCraftingCalculator\\RecipeSelectionForm.cs",
+              "RelativeDocumentMoniker": "RecipeSelectionForm.cs",
+              "ToolTip": "T:\\MinecraftCraftingCalculator\\RecipeSelectionForm.cs [Design]",
+              "RelativeToolTip": "RecipeSelectionForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T17:43:51.527Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "T:\\MinecraftCraftingCalculator\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "T:\\MinecraftCraftingCalculator\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AQIAACYBAAAAAAAAAAAAwDgBAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T17:23:07.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "T:\\MinecraftCraftingCalculator\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "T:\\MinecraftCraftingCalculator\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T17:23:06.373Z"
             }
           ]
         }

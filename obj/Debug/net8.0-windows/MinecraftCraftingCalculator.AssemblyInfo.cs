@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MinecraftCraftingCalculator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3669b37df671bddd6624e84b280f8f0bbc1b8089")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea5a6feeea1c954ea5d4b218bc4342a8d5214ed2")]
 [assembly: System.Reflection.AssemblyProductAttribute("MinecraftCraftingCalculator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MinecraftCraftingCalculator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
