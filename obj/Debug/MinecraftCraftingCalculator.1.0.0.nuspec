@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>MinecraftCraftingCalculator</id>
+    <version>1.0.0</version>
+    <authors>MinecraftCraftingCalculator</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="3669b37df671bddd6624e84b280f8f0bbc1b8089" />
+    <dependencies>
+      <group targetFramework="net8.0-windows7.0">
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net8.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WindowsForms" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="T:\MinecraftCraftingCalculator\bin\Debug\net8.0-windows\MinecraftCraftingCalculator.runtimeconfig.json" target="lib\net8.0-windows7.0\MinecraftCraftingCalculator.runtimeconfig.json" />
+    <file src="T:\MinecraftCraftingCalculator\bin\Debug\net8.0-windows\MinecraftCraftingCalculator.dll" target="lib\net8.0-windows7.0\MinecraftCraftingCalculator.dll" />
+  </files>
+</package>

@@ -1,0 +1,6 @@
+E:\Quick Access\Downloads - HDD\AAA Minecraft-Crafting-Calculator\MinecraftCraftingCalculator.exe
+E:\Quick Access\Downloads - HDD\AAA Minecraft-Crafting-Calculator\MinecraftCraftingCalculator.dll
+E:\Quick Access\Downloads - HDD\AAA Minecraft-Crafting-Calculator\MinecraftCraftingCalculator.deps.json
+E:\Quick Access\Downloads - HDD\AAA Minecraft-Crafting-Calculator\MinecraftCraftingCalculator.runtimeconfig.json
+E:\Quick Access\Downloads - HDD\AAA Minecraft-Crafting-Calculator\MinecraftCraftingCalculator.pdb
+E:\Quick Access\Downloads - HDD\AAA Minecraft-Crafting-Calculator\Newtonsoft.Json.dll
