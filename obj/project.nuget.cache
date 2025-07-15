@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "F/b+5NlZ4sU=",
+  "success": true,
+  "projectFilePath": "T:\\MinecraftCraftingCalculator\\MinecraftCraftingCalculator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\5Poke\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
