@@ -34,7 +34,9 @@
             btnAddItem = new Button();
             lstCraftingList = new ListBox();
             btnCalculate = new Button();
-            lstResults = new ListBox();
+            lstRawMaterials = new ListBox();
+            btnLoadRecipes = new Button();
+            lblRecipeCount = new Label();
             ((System.ComponentModel.ISupportInitialize)numQuantity).BeginInit();
             SuspendLayout();
             // 
@@ -43,13 +45,13 @@
             txtItemName.Enabled = false;
             txtItemName.Location = new Point(12, 12);
             txtItemName.Name = "txtItemName";
-            txtItemName.Size = new Size(100, 23);
+            txtItemName.Size = new Size(234, 23);
             txtItemName.TabIndex = 0;
             // 
             // numQuantity
             // 
             numQuantity.Enabled = false;
-            numQuantity.Location = new Point(118, 12);
+            numQuantity.Location = new Point(252, 12);
             numQuantity.Name = "numQuantity";
             numQuantity.Size = new Size(31, 23);
             numQuantity.TabIndex = 1;
@@ -58,13 +60,12 @@
             // btnAddItem
             // 
             btnAddItem.Enabled = false;
-            btnAddItem.Location = new Point(155, 12);
+            btnAddItem.Location = new Point(289, 12);
             btnAddItem.Name = "btnAddItem";
             btnAddItem.Size = new Size(75, 23);
             btnAddItem.TabIndex = 2;
             btnAddItem.Text = "Add";
             btnAddItem.UseVisualStyleBackColor = true;
-            btnAddItem.Click += button1_Click;
             // 
             // lstCraftingList
             // 
@@ -72,35 +73,55 @@
             lstCraftingList.ItemHeight = 15;
             lstCraftingList.Location = new Point(12, 50);
             lstCraftingList.Name = "lstCraftingList";
-            lstCraftingList.Size = new Size(218, 214);
+            lstCraftingList.Size = new Size(352, 214);
             lstCraftingList.TabIndex = 3;
-            lstCraftingList.SelectedIndexChanged += lstCraftingList_SelectedIndexChanged;
             // 
             // btnCalculate
             // 
             btnCalculate.Enabled = false;
             btnCalculate.Location = new Point(12, 270);
             btnCalculate.Name = "btnCalculate";
-            btnCalculate.Size = new Size(218, 23);
+            btnCalculate.Size = new Size(352, 23);
             btnCalculate.TabIndex = 4;
             btnCalculate.Text = "Calculate Raw Materials";
             btnCalculate.UseVisualStyleBackColor = true;
             // 
-            // lstResults
+            // lstRawMaterials
             // 
-            lstResults.FormattingEnabled = true;
-            lstResults.ItemHeight = 15;
-            lstResults.Location = new Point(502, 50);
-            lstResults.Name = "lstResults";
-            lstResults.Size = new Size(286, 229);
-            lstResults.TabIndex = 5;
+            lstRawMaterials.FormattingEnabled = true;
+            lstRawMaterials.ItemHeight = 15;
+            lstRawMaterials.Location = new Point(502, 50);
+            lstRawMaterials.Name = "lstRawMaterials";
+            lstRawMaterials.Size = new Size(286, 229);
+            lstRawMaterials.TabIndex = 5;
+            // 
+            // btnLoadRecipes
+            // 
+            btnLoadRecipes.Location = new Point(663, 16);
+            btnLoadRecipes.Name = "btnLoadRecipes";
+            btnLoadRecipes.Size = new Size(125, 23);
+            btnLoadRecipes.TabIndex = 6;
+            btnLoadRecipes.Text = "Load Recipes JSON";
+            btnLoadRecipes.UseVisualStyleBackColor = true;
+            btnLoadRecipes.Click += btnLoadRecipes_Click;
+            // 
+            // lblRecipeCount
+            // 
+            lblRecipeCount.AutoSize = true;
+            lblRecipeCount.Location = new Point(531, 20);
+            lblRecipeCount.Name = "lblRecipeCount";
+            lblRecipeCount.Size = new Size(114, 15);
+            lblRecipeCount.TabIndex = 7;
+            lblRecipeCount.Text = "Upload Recipe JSON";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(lstResults);
+            Controls.Add(lblRecipeCount);
+            Controls.Add(btnLoadRecipes);
+            Controls.Add(lstRawMaterials);
             Controls.Add(btnCalculate);
             Controls.Add(lstCraftingList);
             Controls.Add(btnAddItem);
@@ -121,6 +142,8 @@
         private Button btnAddItem;
         private ListBox lstCraftingList;
         private Button btnCalculate;
-        private ListBox lstResults;
+        private ListBox lstRawMaterials;
+        private Button btnLoadRecipes;
+        private Label lblRecipeCount;
     }
 }

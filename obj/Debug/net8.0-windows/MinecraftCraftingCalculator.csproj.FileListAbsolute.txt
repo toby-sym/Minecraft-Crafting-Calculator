@@ -17,3 +17,4 @@ T:\MinecraftCraftingCalculator\obj\Debug\net8.0-windows\refint\MinecraftCrafting
 T:\MinecraftCraftingCalculator\obj\Debug\net8.0-windows\MinecraftCraftingCalculator.pdb
 T:\MinecraftCraftingCalculator\obj\Debug\net8.0-windows\MinecraftCraftingCalculator.genruntimeconfig.cache
 T:\MinecraftCraftingCalculator\obj\Debug\net8.0-windows\ref\MinecraftCraftingCalculator.dll
+T:\MinecraftCraftingCalculator\obj\Debug\net8.0-windows\MinecraftCraftingCalculator.sourcelink.json
